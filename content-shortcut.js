@@ -6,6 +6,7 @@ function startShortcuts(){
 
 	inputMatricula()
 	btnFichaAcademica()
+	btnSenha()
 	btnHitorico()
 	btnFichaFinanceira()
 	btnRematricula()
@@ -27,6 +28,7 @@ function startShortcuts(){
 		taskBar.appendChild(btnFichaAcademica)
 		btnFichaAcademica.addEventListener("click",()=>{
 			window.open("/registro_controle_academico/fichaAcademica.php", "_self")
+			saveMatricula()
 		})
 	}
 	
@@ -37,6 +39,7 @@ function startShortcuts(){
 		taskBar.appendChild(btnHistorico)
 		btnHistorico.addEventListener("click",()=>{
 			window.open("/registro_controle_academico/consultaHistoricoOficial.php", "_self")
+			saveMatricula()
 		})
 	}
 	
@@ -47,6 +50,7 @@ function startShortcuts(){
 		taskBar.appendChild(btnFichaFinanceira)
 		btnFichaFinanceira.addEventListener("click",()=>{
 			window.open("/financeiro/fichaFinanceira.php", "_self")
+			saveMatricula()
 		})
 	}
 	
@@ -55,8 +59,9 @@ function startShortcuts(){
 		btnRematricula.innerHTML = "Rematrícula"
 		btnRematricula.classList.add("btnInput")
 		taskBar.appendChild(btnRematricula)
-		btnRematricula.addEventListener("click",()=>{
+		btnRematricula.addEventListener("click", ()=>{
 			window.open("/registro_controle_academico/rematricula.php", "_self")
+			saveMatricula()
 		})
 	}
 	
@@ -67,8 +72,10 @@ function startShortcuts(){
 		taskBar.appendChild(btnNovoRequerimento)
 		btnNovoRequerimento.addEventListener("click",()=>{
 			window.open("/registro_controle_academico/registroRequerimento.php", "_self")
+			saveMatricula()
 		})
 	}
+
 	function btnVerRequerimento(){
 		const btnVerRequerimento = document.createElement("button")
 		btnVerRequerimento.innerHTML = "Ver Requerimento"
@@ -76,6 +83,18 @@ function startShortcuts(){
 		taskBar.appendChild(btnVerRequerimento)
 		btnVerRequerimento.addEventListener("click",()=>{
 			window.open("/registro_controle_academico/acompanhamentoRequerimento.php", "_self")
+			saveMatricula()
+		})
+	}
+
+	function btnSenha(){
+		const btnPassword = document.createElement("button")
+		btnPassword.innerHTML = "Senha"
+		btnPassword.classList.add("btnInput")
+		taskBar.appendChild(btnPassword)
+		btnPassword.addEventListener("click",()=>{
+			window.open("/registro_controle_academico/cadastroSenhaAd.php", "_self")
+			saveMatricula()
 		})
 	}
 
@@ -94,5 +113,8 @@ function startShortcuts(){
 	}
 
 
+
+
+	
 }
 

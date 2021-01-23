@@ -4,44 +4,29 @@ startShortcuts()
 
 function startShortcuts(){
 	inputMatricula()
-	btnFill()
-
+	btnFichaAcademica()
 	function inputMatricula(){
 		const txtMatricula = document.createElement("input")
 		txtMatricula.classList.add("txtInput")
 		txtMatricula.id = "txtMatricula"
 		taskBar.appendChild(txtMatricula)
 	}
-	
-	function btnFill(){
-		const btnFill = document.createElement("button")
-		btnFill.innerHTML = "Preencher"
-		btnFill.classList.add("btnInput")
-		taskBar.appendChild(btnFill)
-		btnFill.addEventListener("click",()=>{
-			fillArea()
-		})
 
-		function fillArea(){
-			const area_matricula = document.querySelector("#alun_matricula")
-			const insert_matricula = document.querySelector("#txtMatricula")
-			const fill_matricula = document.querySelector("#btn_filtrar")
-	
-			area_matricula.value = insert_matricula.value
-			fill_matricula.click()
-		}
+	function btnFichaAcademica(){
+		const btnFichaAcademica = document.createElement("button")
+		btnFichaAcademica.innerHTML = "Ficha acadêmica"
+		btnFichaAcademica.classList.add("btnInput")
+		taskBar.appendChild(btnFichaAcademica)
 		
-	}
+		if(btnFichaAcademica.click){
+			alert('marrapazzzz')
+		}
 
-	//FICHA ACADÊMICA
-	const btnFichaAcademica = document.createElement("button")
-	btnFichaAcademica.innerHTML = "Ficha acadêmica"
-	btnFichaAcademica.classList.add("btnInput")
-	taskBar.appendChild(btnFichaAcademica)
-	
-	btnFichaAcademica.addEventListener("click",()=>{
-		window.open("/registro_controle_academico/fichaAcademica.php", "_self")
-	})
+		//btnFichaAcademica.addEventListener("click",()=>{
+		//	alert('click')
+			//window.open("/registro_controle_academico/fichaAcademica.php", "_self")
+		//}}
+	}
 	
 	//HISTÓRICO
 	const btnHistorico = document.createElement("button")
@@ -92,5 +77,49 @@ function startShortcuts(){
 	btnVerRequerimento.addEventListener("click",()=>{
 		window.open("/registro_controle_academico/acompanhamentoRequerimento.php", "_self")
 	})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	function btnFill(){
+		const btnFill = document.createElement("button")
+		btnFill.innerHTML = "Preencher"
+		btnFill.classList.add("btnInput")
+		taskBar.appendChild(btnFill)
+		btnFill.addEventListener("click",()=>{
+			fillArea()
+		})
+
+		function fillArea(){
+			const area_matricula = document.querySelector("#alun_matricula")
+			const insert_matricula = document.querySelector("#txtMatricula")
+			const fill_matricula = document.querySelector("#btn_filtrar")
+	
+			area_matricula.value = insert_matricula.value
+			fill_matricula.click()
+		}
+		
+	}
+
+
+
+
 }
 

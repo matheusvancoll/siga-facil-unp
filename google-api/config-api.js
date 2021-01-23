@@ -1,4 +1,4 @@
-const matricula_padrao = 0;
+const matricula_padrao = "";
 
 onExtensionInstalled(setInitial);
 
@@ -13,5 +13,5 @@ async function setInitialActive(){
 
 async function setInitialMatricula(){
 	const matricula = await getMatricula();
-	if(matricula == null) await setMatricula(matricula_padrao);
+	if(matricula == 0) await setMatricula(matricula_padrao);
 }

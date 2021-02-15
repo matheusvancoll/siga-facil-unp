@@ -104,17 +104,20 @@ function startShortcuts(){
 			const delay = 500
 			setTimeout(function(){
 				const area_matricula = document.querySelector("#alun_matricula")
+				const area_matricula_opc = document.querySelector("#txt_numero_matricula")
 				const insert_matricula = document.querySelector("#txtMatricula")
 				const fill_matricula = document.querySelector("#btn_filtrar")
-				area_matricula.value = insert_matricula.value
-				fill_matricula.click()
+				const fill_matricula_opc = document.querySelector("#botao_busca_pessoa")
+				if(area_matricula_opc == null){
+					area_matricula.value = insert_matricula.value
+					fill_matricula.click()
+				}else{
+					area_matricula_opc.value = insert_matricula.value
+					fill_matricula_opc.click()
+				}
 			},delay);
 		}
 	}
-
-
-
-
 	
 }
 

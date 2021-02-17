@@ -6,6 +6,7 @@ function startShortcuts(){
 
 	inputMatricula()
 	btnFichaAcademica()
+	btnAluno()
 	btnSenha()
 	btnHitorico()
 	btnFichaFinanceira()
@@ -28,6 +29,17 @@ function startShortcuts(){
 		taskBar.appendChild(btnFichaAcademica)
 		btnFichaAcademica.addEventListener("click",()=>{
 			window.open("/registro_controle_academico/fichaAcademica.php", "_self")
+			saveMatricula()
+		})
+	}
+	
+	function btnAlunos(){
+		const btnAlunos = document.createElement("button")
+		btnAlunos.innerHTML = "Dados Cadastrais"
+		btnAlunos.classList.add("btnInput")
+		taskBar.appendChild(btnAlunos)
+		btnAlunos.addEventListener("click",()=>{
+			window.open("/registro_controle_academico/cadastroAluno.php", "_self")
 			saveMatricula()
 		})
 	}

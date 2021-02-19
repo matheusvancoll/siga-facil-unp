@@ -1,111 +1,47 @@
 const taskBar = document.querySelector("#espaco_1")
 
+const txtMatricula = document.createElement("input")
+const btnFichaAcademica = document.createElement("button")
+const btnDadosCadastrais = document.createElement("button")
+const btnSenha = document.createElement("button")
+const btnHistorico = document.createElement("button")
+const btnFichaFinanceira = document.createElement("button")
+const btnRematricula = document.createElement("button")
+const btnAjusteMatricula = document.createElement("button")
+const btnNovoRequerimento = document.createElement("button")
+const btnVerRequerimento = document.createElement("button")
+
 startShortcuts()
 
 function startShortcuts(){
 
-	inputMatricula()
-	btnFichaAcademica()
-	btnAlunos()
-	btnSenha()
-	btnHitorico()
-	btnFichaFinanceira()
-	btnRematricula()
-	btnNovoRequerimento()
-	btnVerRequerimento()
+	
+	
+
+	insertInput(txtMatricula)
+	insertBtn(btnFichaAcademica, "Ficha Acadêmica", "/registro_controle_academico/fichaAcademica.php")
+	insertBtn(btnDadosCadastrais, "Dados cadastrais", "/registro_controle_academico/cadastroAluno.php")
+	insertBtn(btnSenha, "Senha", "/registro_controle_academico/cadastroSenhaAd.php")
+	insertBtn(btnHistorico, "Histórico", "/registro_controle_academico/consultaHistoricoOficial.php")
+	insertBtn(btnFichaFinanceira, "Ficha Financeira", "/financeiro/fichaFinanceira.php")
+	insertBtn(btnRematricula, "Rematricula", "/registro_controle_academico/rematricula.php")
+	insertBtn(btnAjusteMatricula, "Ajuste de matrícula", "/registro_controle_academico/ajuste.php")
+	insertBtn(btnNovoRequerimento, "Novo Requerimento", "/registro_controle_academico/registroRequerimento.php")
+	insertBtn(btnVerRequerimento, "Ver Requerimento", "/registro_controle_academico/acompanhamentoRequerimento.php")
 	fillArea()
 	
-	function inputMatricula(){
-		const txtMatricula = document.createElement("input")
-		txtMatricula.classList.add("txtInput")
-		txtMatricula.id = "txtMatricula"
-		taskBar.appendChild(txtMatricula)	
+	function insertInput(inputName){
+		inputName.classList.add("txtInput")
+		inputName.id = "txtMatricula"
+		taskBar.appendChild(inputName)	
 	}
 
-	function btnAlunos(){
-		const btnAlunos = document.createElement("button")
-		btnAlunos.innerHTML = "Dados Cadastrais"
-		btnAlunos.classList.add("btnInput")
-		taskBar.appendChild(btnAlunos)
-		btnAlunos.addEventListener("click",()=>{
-			window.open("/registro_controle_academico/cadastroAluno.php", "_self")
-			saveMatricula()
-		})
-	}
-
-	function btnFichaAcademica(){
-		const btnFichaAcademica = document.createElement("button")
-		btnFichaAcademica.innerHTML = "Ficha acadêmica"
-		btnFichaAcademica.classList.add("btnInput")
-		taskBar.appendChild(btnFichaAcademica)
-		btnFichaAcademica.addEventListener("click",()=>{
-			window.open("/registro_controle_academico/fichaAcademica.php", "_self")
-			saveMatricula()
-		})
-	}
-	
-	function btnHitorico(){
-		const btnHistorico = document.createElement("button")
-		btnHistorico.innerHTML = "Histórico"
-		btnHistorico.classList.add("btnInput")
-		taskBar.appendChild(btnHistorico)
-		btnHistorico.addEventListener("click",()=>{
-			window.open("/registro_controle_academico/consultaHistoricoOficial.php", "_self")
-			saveMatricula()
-		})
-	}
-	
-	function btnFichaFinanceira(){
-		const btnFichaFinanceira = document.createElement("button")
-		btnFichaFinanceira.innerHTML = "Ficha Financeira"
-		btnFichaFinanceira.classList.add("btnInput")
-		taskBar.appendChild(btnFichaFinanceira)
-		btnFichaFinanceira.addEventListener("click",()=>{
-			window.open("/financeiro/fichaFinanceira.php", "_self")
-			saveMatricula()
-		})
-	}
-	
-	function btnRematricula(){
-		const btnRematricula = document.createElement("button")
-		btnRematricula.innerHTML = "Rematrícula"
-		btnRematricula.classList.add("btnInput")
-		taskBar.appendChild(btnRematricula)
-		btnRematricula.addEventListener("click", ()=>{
-			window.open("/registro_controle_academico/rematricula.php", "_self")
-			saveMatricula()
-		})
-	}
-	
-	function btnNovoRequerimento(){
-		const btnNovoRequerimento = document.createElement("button")
-		btnNovoRequerimento.innerHTML = "Novo Requerimento"
-		btnNovoRequerimento.classList.add("btnInput")
-		taskBar.appendChild(btnNovoRequerimento)
-		btnNovoRequerimento.addEventListener("click",()=>{
-			window.open("/registro_controle_academico/registroRequerimento.php", "_self")
-			saveMatricula()
-		})
-	}
-
-	function btnVerRequerimento(){
-		const btnVerRequerimento = document.createElement("button")
-		btnVerRequerimento.innerHTML = "Ver Requerimento"
-		btnVerRequerimento.classList.add("btnInput")
-		taskBar.appendChild(btnVerRequerimento)
-		btnVerRequerimento.addEventListener("click",()=>{
-			window.open("/registro_controle_academico/acompanhamentoRequerimento.php", "_self")
-			saveMatricula()
-		})
-	}
-
-	function btnSenha(){
-		const btnPassword = document.createElement("button")
-		btnPassword.innerHTML = "Senha"
-		btnPassword.classList.add("btnInput")
-		taskBar.appendChild(btnPassword)
-		btnPassword.addEventListener("click",()=>{
-			window.open("/registro_controle_academico/cadastroSenhaAd.php", "_self")
+	function insertBtn(btnName, viewName, link){
+		btnName.innerHTML = viewName
+		btnName.classList.add("btnInput")
+		taskBar.appendChild(btnName)
+		btnName.addEventListener("click",()=>{
+			window.open(link, "_self")
 			saveMatricula()
 		})
 	}
@@ -132,4 +68,3 @@ function startShortcuts(){
 	}
 	
 }
-

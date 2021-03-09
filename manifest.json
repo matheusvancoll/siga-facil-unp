@@ -1,12 +1,16 @@
 {
 	"manifest_version":2,
-    "name": "SigaFacil_UnP",
-    "version": "1.6",
+    "name": "UnP Studios",
+    "version": "1.7",
     "description": "Fácil acesso ao sistema do SIGA",
     "content_scripts": [{
 		"matches": ["<all_urls>"],
 		"css": ["css/styles.css"],
-		"js": ["google-api/google-api.js", "content-shortcut.js", "content-api.js"]
+		"js": ["google-api/google-api.js",
+			"sisfies-api/sisfies-api.js",
+			"content-shortcut.js",
+			"content-api.js",
+			"sisfies-shortcut.js"]
 	}],
 	"browser_action":{
 		"default_popup": "index-extension.html"

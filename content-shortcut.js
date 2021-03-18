@@ -18,7 +18,7 @@ function validatePlugin(){
 		
 		startShortcuts()
 		
-		function startShortcuts(){
+		function startShortcuts(){ // inicializando os elementos
 			insertInput(txtMatricula)
 			insertBtn(btnFichaAcademica, "Ficha Acadêmica", "/registro_controle_academico/fichaAcademica.php")
 			insertBtn(btnDadosCadastrais, "Cadastro", "/registro_controle_academico/cadastroAluno.php")
@@ -32,13 +32,13 @@ function validatePlugin(){
 			insertBtn(btnVerRequerimento, "Ver Requerimento", "/registro_controle_academico/acompanhamentoRequerimento.php")
 			fillArea()
 			
-			function insertInput(inputName){
+			function insertInput(inputName){ // insere o campo de inserção
 				inputName.classList.add("txtInput")
 				inputName.id = "txtMatricula"
 				taskBar.appendChild(inputName)	
 			}
 		
-			function insertBtn(btnName, viewName, link, type){
+			function insertBtn(btnName, viewName, link, type){ // insere cada botão
 				btnName.innerHTML = viewName
 				btnName.classList.add("btnInput", type)
 				taskBar.appendChild(btnName)
@@ -47,57 +47,65 @@ function validatePlugin(){
 					saveMatricula()
 				})
 			}
-		
-			function fillArea(){
+			
+			function fillArea(){ // filtra os alunos de forma dinâmica
 				const result = document.querySelector(".tabela_relatorio")
 				if(result == null){
 					const delay = 500
 					setTimeout(function(){
-						const area_matricula = document.querySelector("#alun_matricula")
-						const area_cpf = document.querySelector("#pess_cpf")
-						const area_matricula_data = document.querySelector("#txt_numero_matricula")
-						const area_cpf_data = document.querySelector("#txt_cpf")
-						const area_matricula_requerimento = document.querySelector("#alun_matricula_filtro")
-						const area_cpf_requerimento = document.querySelector("#cpf_aluno_filtro")
-						
-						const insert_matricula = document.querySelector("#txtMatricula")
-						const insert_size = insert_matricula.value.length
-						
-						const fill_matricula = document.querySelector("#btn_filtrar")
-						const fill_matricula_data = document.querySelector("#botao_busca_pessoa")
-						
-						if ( area_matricula_requerimento != null ) {
-							if(insert_size > 10){
-								area_cpf_requerimento.value = insert_matricula.value
-							}else{
-								area_matricula_requerimento.value = insert_matricula.value
-							}
-
-							fill_matricula.click()
-						}
-		
-						if ( area_matricula_data != null ) {
-							if(insert_size > 10){
-								area_cpf_data.value = insert_matricula.value
-							}else{
-								area_matricula_data.value = insert_matricula.value
-							}
-							fill_matricula_data.click()
-						}
-		
-						if ( area_matricula != null ) {
-							if(insert_size > 10){
-								area_cpf.value = insert_matricula.value
-							}else{
-								area_matricula.value = insert_matricula.value
-							}
-							fill_matricula.click()
-						}
-						
+						validateEnter()
 					},delay);
 				}
-				
 			}
+
+			function validateEnter(){ // Valida o input do usuário
+				const insert_input = document.querySelector("#txtMatricula")
+				const insert_size = insert_input.value.length
+				
+				const area_fill_matricula = document.querySelector("#alun_matricula") // Retorna area de lista de alunos
+				const area_fill_cpf = document.querySelector("#pess_cpf") // Input de filtro via CPF
+							
+				const area_matricula_data = document.querySelector("#txt_numero_matricula") // Input "dados cadastrais"
+				const area_cpf_data = document.querySelector("#txt_cpf") // Input "dados cadastrais"
+				const area_matricula_requerimento = document.querySelector("#alun_matricula_filtro") // Input "requerimentos"
+				const area_cpf_requerimento = document.querySelector("#cpf_aluno_filtro") // Input "requerimentos"
+							
+				const fill_alun = document.querySelector("#btn_filtrar")
+				const fill_alun_data = document.querySelector("#botao_busca_pessoa")
+				
+				function infoSize(size){ // retorna o tipo de dado
+					if(size == 11){ return "CPF" }
+					if(size == 9){ return "RA" }
+				}
+
+				function selectEnter(alun, cpf, btn, size){ // filtra o input de acordo com o tipo de elemento
+					if(size == "RA"){
+						alun.value = insert_input.value
+						btn.click()
+					}
+					if(size == "CPF"){
+						cpf.value = insert_input.value
+						btn.click()
+					}
+				}
+
+				if ( area_fill_matricula != null ) {
+					selectEnter(area_fill_matricula, area_fill_cpf, fill_alun, infoSize(insert_size))
+				}
+
+				if ( area_matricula_requerimento != null ) {
+					selectEnter(area_matricula_requerimento, area_cpf_requerimento, fill_alun, infoSize(insert_size))
+				}
+				
+				if ( area_matricula_data != null ) {
+					selectEnter(area_matricula_data, area_cpf_data, fill_alun_data, infoSize(insert_size))
+				}
+				
+				if(infoSize(insert_size) == null){
+					alert("Ops.. Houve um erro com o valor digitado!")
+				}
+			}
+
 			
 		}
 	}

@@ -16,6 +16,9 @@ function validatePlugin(){
 		const btnTrocaTurma = document.createElement("button")
 		const btnDadosCadastrais = document.createElement("button")
 		const btnSimulaParcela = document.createElement("button")
+		const btnVaga = document.createElement("button")
+		const btnLiberaSerie = document.createElement("button")
+		const btnLiberaDisciplina = document.createElement("button")
 		
 		startShortcuts()
 		
@@ -32,6 +35,9 @@ function validatePlugin(){
 			insertBtn(btnNovoRequerimento, "Novo Requerimento", "/registro_controle_academico/registroRequerimento.php")
 			insertBtn(btnVerRequerimento, "Ver Requerimento", "/registro_controle_academico/acompanhamentoRequerimento.php")
 			insertBtn(btnSimulaParcela, "Simular Parcela", "/financeiro/simulaGeracaoParcela.php")
+			insertBtn(btnVaga, "Vaga", "/registro_controle_academico/cadastroTurma.php")
+			insertBtn(btnLiberaSerie, "Libera Série", "/registro_controle_academico/autorizacaoSerie.php")
+			insertBtn(btnLiberaDisciplina, "Libera Disciplina", "/registro_controle_academico/cadastroTurma.php")
 			fillArea()
 			
 			function insertInput(inputName){ // insere o campo de inserção
